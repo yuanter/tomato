@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wmg.dao.RegisterDao">
+     <!-- 公共查询部分 -->
+     <sql id="common">
+     select *   
+     </sql>
+     
+     
+	<!-- 通过学号查询用户是否存在或者通过查询用户标志是否可用 -->
+	<select id="findUserByStudengID" parameterType="java.lang.String" resultType="com.wmg.model.User">
+	<include refid="common"/> from userinfo u where u.UserSign=1 and u.StudentID=#{studentID,jdbcType=VARCHAR}
+	</select>
+
+
+	<!-- 通过手机号查询用户是否存在  -->
+	<select id="findUserByTel" parameterType="java.lang.String" resultType="com.wmg.model.User">
+	<include refid="common"/> from userinfo u where u.UserSign=1 and u.Tel=#{Tel,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 插入新增用户数据 -->
+	<insert id="insertUserInfo" parameterType="com.wmg.model.User"  ><!-- 获取自增长ID -->
+    <selectKey keyProperty="id" resultType="java.lang.Integer" order="AFTER" keyColumn="id" >SELECT LAST_INSERT_ID() AS UID</selectKey>
+    insert into userinfo(StudentID, Password, UserNickName, Name, Tel, Email, Sex, UserSign, IDCard, UserAddress, RegistrationTime) values
+    (#{StudentID},#{Password},#{UserNickName},#{Name},#{Tel},#{Email},#{Sex},#{UserSign},#{IDCard},#{UserAddress},#{RegistrationTime})
+   </insert>
+
+</mapper>

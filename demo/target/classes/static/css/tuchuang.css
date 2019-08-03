@@ -1,0 +1,24 @@
+body,html{height:100%;margin:0;padding:0}
+#container{max-width:720px;flex-basis:100%;margin:0 auto;background:#FFF;border-radius:10px;overflow:hidden}
+#container #hero-img{width:100%;height:200px;background:#007bff}
+#container #profile-img{width:160px;height:160px;margin:-80px auto 0 auto}
+#container #profile-img img{width:100%;background:#FFF;border-radius:50%}
+#container #content{text-align:center;width:100%;margin:0 auto;padding:0 0 50px 0}
+#container #content h1{font-size:29px;font-weight:500;margin:30px 0 0 0}
+#container #content p{font-size:18px;font-weight:400;line-height:1.4;color:#666;margin:15px 0 40px 0}
+#container #content a{color:#CCC;font-size:14px;margin:0 10px;transition:color .3s ease-in-out;-webkit-transition:color .3s ease-in-out;line-height:40px}
+#container #content a:hover{color:#007bff}
+.btn{background:none repeat scroll 0 0 #1BA1E2;border:0 none;border-radius:2px;color:#FFF!important;cursor:pointer;font-family:"Open Sans","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",Arial,Verdana,Tahoma,sans-serif;font-size:14px;padding:6px 10%}
+.btn:hover,.yanshibtn:hover{background:none repeat scroll 0 0 #4ba0a0;border:0 none;border-radius:2px;color:#FFF!important;cursor:pointer;}
+.imgType{display:none}
+a {text-decoration: none}
+#images img{width:92%}
+#imgurl textarea{width:85%;padding:8px;}
+#imgurl,#progress{margin-top:80px;display:none}
+@-webkit-keyframes rotation{from{-webkit-transform:rotate(0)}
+to{-webkit-transform:rotate(360deg)}
+}
+.Rotation{-webkit-transform:rotate(360deg);animation:rotation 3s linear infinite;-moz-animation:rotation 3s linear infinite;-webkit-animation:rotation 3s linear infinite;-o-animation:rotation 3s linear infinite}
+.img{border-radius:250px}
+.code{display:block;padding-bottom:15px;}
+.footer { position: fixed; bottom: 0; width: 100%; height: 60px; background-color: #f5f5f5; }

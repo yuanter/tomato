@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wmg.dao.LoginDao">
+     <!-- 公共查询部分 -->
+     <sql id="common">
+     select *   
+     </sql>
+     
+     
+<!-- 通过学号查询用户是否存在或者通过查询用户标志是否可用 -->
+<select id="findUserByStudengID" parameterType="java.lang.String" resultType="com.wmg.model.User">
+	<include refid="common"/> from userinfo u where u.UserSign=1 and u.StudentID=#{studentID,jdbcType=VARCHAR}
+</select>
+
+<!-- 通过管理员ID查询管理员是否存在或者通过查询用户标志是否可用 -->
+<select id="findAdminByAdminID" parameterType="java.lang.String" resultType="com.wmg.model.Admin">
+	<include refid="common"/> from admininfo a where a.AdminSign=1 and a.AdminID=#{adminID,jdbcType=VARCHAR}
+</select>
+
+
+</mapper>

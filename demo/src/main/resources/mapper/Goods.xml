@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wmg.dao.GoodsDao">
+
+	<!-- 通过交易信息ID查询一个交易信息 -->
+	<select id="findGoodsByTransactionID" parameterType="java.lang.Long" resultType="com.wmg.model.GoodsInfo">
+		select * from transactioninfo u where u.TransactionState=1 and u.TransactionID=#{TransactionID}
+	</select>
+	
+	
+	<!-- 通过交易信息ID查询一组交易信息 -->
+	<select id="findAllGoodsByTransactionID" parameterType="java.lang.Long" resultType="com.wmg.model.GoodsInfo">
+		select * from transactioninfo u where u.TransactionState=1 and u.TransactionID=#{TransactionID}
+	</select>
+	
+	<!-- 初始化查询一类数据 -->
+	<select id="findGoodsInfo" resultType="com.wmg.model.GoodsInfo">
+		select * from transactioninfo u where u.TransactionState=1 and u.Category=#{Category,jdbcType=VARCHAR}
+	</select>
+	
+	<!-- 查询所有交易信息数据 -->
+	<select id="findAllGoodsInfo" resultType="com.wmg.model.GoodsInfo">
+		select * from transactioninfo u where u.TransactionState=1
+	</select>
+	
+	<!-- 根据交易ID查找学号 -->
+	<select id="findStudentIdByTransactionID" resultType="java.lang.String">
+		select u.StudentID from userinfo_transactioninfo u where u.TransactionID=#{TransactionID}
+	</select>
+	
+	<!-- 更新用户与信息表 -->
+	<insert id="addUserAndGoodsInfo">
+		insert into userinfo_transactioninfo(StudentID,TransactionID) values(#{StudentID},#{TransactionID})
+	</insert>
+
+	<!-- 插入交易信息数据 -->
+	<insert id="addGoodsInfo">
+		insert into transactioninfo(TransactionID, `Title`, Mode, Category, `Condition`, Price, `Describe`, Photo, TransactionState, Message, CreateTime, TransactionTime, TransactionAddress, TrafficVolume) values(#{TransactionID}, #{Title}, #{Mode},#{Category}, #{Condition}, #{Price}, #{Describe}, #{Photo}, #{TransactionState}, #{Message}, #{CreateTime}, #{TransactionTime}, #{TransactionAddress}, #{TrafficVolume})
+	</insert>
+
+</mapper>
